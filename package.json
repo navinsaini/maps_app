@@ -1,0 +1,58 @@
+{
+  "name": "efficasea",
+  "version": "1.0.0",
+  "description": "Efficasea",
+  "author": "",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . efficasea --icon='lib/img/efficasea-black.icns' --overwrite --asar --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-linux": "electron-packager . efficasea --icon='lib/img/efficasea-black.ico' --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . efficasea --icon='lib/img/efficasea-black.ico' --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.efficasea.app",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "icon": "lib/img/efficasea-black.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "lib/img/efficasea-black.ico"
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "lib/img/efficasea-black.ico"
+    }
+  },
+  "dependencies": {
+    "electron-fetch": "^1.4.0",
+    "electron-tabs": "^0.13.0",
+    "electron-updater": "^4.3.1"
+  },
+  "devDependencies": {
+    "electron": "^8.1.0",
+    "electron-builder": "^22.6.0",
+    "electron-builder-squirrel-windows": "^22.6.0",
+    "electron-packager": "^14.2.1"
+  }
+}
